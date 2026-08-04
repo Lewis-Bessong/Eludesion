@@ -1,30 +1,29 @@
 #include <raylib.h>
+#include <iostream> 
+
+const int WindowHeight = 800;
+const int WindowWidth = 800; 
+
 
 int main()
 {
 
-    InitWindow(800, 800, "Lewis's first program");
+    InitWindow(WindowWidth, WindowHeight, "Lewis's first program");
     SetTargetFPS(60);
 
     // loop
     while (WindowShouldClose() == false)
     {
-        // Main Menu Code
-
-        // lambda ?
-        auto Menu = []() {
-
-            DrawText("This is Eludesion", 20, 20, 20, BLACK);
-        };
-        
-
-        //Drawing
+        // Main Menu
         BeginDrawing();
-        {
-            ClearBackground(LIGHTGRAY);
+        {       
+            ToggleFullscreen();
 
-            Menu();
+            ClearBackground(BLACK);
+            GenImageColor(400, 400, WHITE); // half of screen is black 
 
+            DrawText("This Is Eludesion", 0, 0, 30, WHITE);
+            
         }
         EndDrawing();
     }
