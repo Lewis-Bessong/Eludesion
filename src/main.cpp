@@ -17,13 +17,14 @@ int main()
         // Main Menu
         BeginDrawing();
         {       
-            ToggleFullscreen();
+            // Circle Creation 
 
-            ClearBackground(BLACK);
-            GenImageColor(400, 400, WHITE); // half of screen is black 
+            ClearBackground(WHITE);
 
-            DrawText("This Is Eludesion", 0, 0, 30, WHITE);
+            DrawCircle(400, 400, 200, RED);
+
             
+
         }
         EndDrawing();
     }
