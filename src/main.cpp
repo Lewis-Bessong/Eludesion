@@ -4,6 +4,13 @@
 const int WindowHeight = 800;
 const int WindowWidth = 800; 
 
+struct GameCircle {
+
+    Vector2 center; 
+    float radius;
+    Color color;
+
+};
 
 int main()
 {
@@ -20,8 +27,11 @@ int main()
             // Circle Creation 
 
             ClearBackground(WHITE);
+    
+            GameCircle RedCircle = { {400, 400}, 50, RED};
 
-            DrawCircle(400, 400, 200, RED);
+            // Circle Movement
+
 
             
 
