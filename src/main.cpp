@@ -4,11 +4,14 @@
 const int WindowHeight = 800;
 const int WindowWidth = 800; 
 
-struct GameCircle {
+struct GameCircle { // class for circle (draw circle vector 2)
 
     Vector2 center; 
     float radius;
     Color color;
+
+    int Width = 400;
+    int Height = 400;
 
 };
 
@@ -28,11 +31,19 @@ int main()
 
             ClearBackground(WHITE);
     
-            GameCircle RedCircle = { {400, 400}, 50, RED};
+            GameCircle RedCircle = { {RedCircle.Width, RedCircle.Height}, 50, RED};
 
-            // Circle Movement
+            // Movement Logic 
 
+            // Keyboard
 
+            if (IsKeyPressed(KEY_W)) {
+
+                RedCircle.Width += 3;
+            } if (IsKeyPressed(KEY_S)) {
+
+                RedCircle.Height += 3;
+            }
             
 
         }
