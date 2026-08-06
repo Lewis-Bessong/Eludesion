@@ -13,6 +13,7 @@ int main()
 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
 
+    int gamepadIdx = 0;
 
     // loop
     while (WindowShouldClose() == false)
@@ -36,7 +37,30 @@ int main()
             if (IsKeyDown(KEY_W)) BallPosition.y -= 3.0f;
             if (IsKeyDown(KEY_S)) BallPosition.y += 3.0f;
 
-            
+            // PS4 Controller
+            if (IsGamepadAvailable(gamepadIdx)) { // if controller connected
+
+                DrawText("Controller Connected.", WindowWidth/2, 0, 30, BLACK);
+
+                if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
+
+                    BallPosition.x += 3.0f;
+                } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
+
+                    BallPosition.x -= 3.0f;
+                } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
+
+                    BallPosition.y -= 3.0f;
+                } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
+
+                    BallPosition.y += 3.0f;
+                }
+
+            } else { // if no controller connected
+
+                DrawText("No Controller Found", WindowWidth/2, 0, 30, BLACK);
+            }
+
 
         }
         EndDrawing();
