@@ -29,8 +29,10 @@ int main()
             // Movement Logic 
 
             // Keyboard
-
             if (IsKeyPressed(KEY_D)) BallPosition.x += 3.0f;
+            if (ISKeyPressed(KEY_A)) BallPosition.x -= 3.0f;
+            if (ISKeyPressed(KEY_W)) BallPosition.y += 3.0f;
+            if (ISKeyPressed(KEY_S)) BallPosition.y -= 3.0f;
 
         }
         EndDrawing();
