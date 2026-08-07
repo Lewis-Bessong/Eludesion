@@ -15,7 +15,7 @@ int main()
 
     // rectangle 
     Vector2 RectanglePosition = { (float)WindowWidth/4, (float)WindowHeight/4};
-    Vector2 RectangleSize = { (float)50.0f, (float)50.0f};
+    Vector2 RectangleSize = { (float)100.0f, (float)100.0f};
 
 
     int gamepadIdx = 0;
@@ -67,6 +67,8 @@ int main()
 
                 DrawText("No Controller Found", WindowWidth/2, 0, 30, BLACK);
             }
+
+            // ======= Collision ========
 
 
         }
