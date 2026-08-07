@@ -13,6 +13,11 @@ int main()
 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
 
+    // rectangle 
+    Vector2 RectanglePosition = { (float)WindowWidth/4, (float)WindowHeight/4};
+    Vector2 RectangleSize = { (float)50.0f, (float)50.0f};
+
+
     int gamepadIdx = 0;
 
     // loop
@@ -21,39 +26,41 @@ int main()
         // Main Menu
         BeginDrawing();
         {       
-            // Circle Creation 
+            // ====== Objects Creation =======
 
             ClearBackground(WHITE);
     
             DrawCircleV(BallPosition, 50, RED);
 
-            // Movement Logic 
+            DrawRectangleV(RectanglePosition, RectangleSize, MAGENTA);
+
+            // ====== Movement Logic =======
 
             // Keyboard
             SetExitKey(KEY_ESCAPE); // if pressed exits program
 
-            if (IsKeyDown(KEY_D)) BallPosition.x += 3.0f;
-            if (IsKeyDown(KEY_A)) BallPosition.x -= 3.0f;
-            if (IsKeyDown(KEY_W)) BallPosition.y -= 3.0f;
-            if (IsKeyDown(KEY_S)) BallPosition.y += 3.0f;
+            if (IsKeyDown(KEY_D)) BallPosition.x += 5.0f;
+            if (IsKeyDown(KEY_A)) BallPosition.x -= 5.0f;
+            if (IsKeyDown(KEY_W)) BallPosition.y -= 5.0f;
+            if (IsKeyDown(KEY_S)) BallPosition.y += 5.0f;
 
-            // PS4 Controller
+            // Controller
             if (IsGamepadAvailable(gamepadIdx)) { // if controller connected
 
                 DrawText("Controller Connected.", WindowWidth/2, 0, 30, BLACK);
 
                 if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
 
-                    BallPosition.x += 3.0f;
+                    BallPosition.x += 5.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
 
-                    BallPosition.x -= 3.0f;
+                    BallPosition.x -= 5.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
 
-                    BallPosition.y -= 3.0f;
+                    BallPosition.y -= 5.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
 
-                    BallPosition.y += 3.0f;
+                    BallPosition.y += 5.0f;
                 }
 
             } else { // if no controller connected
