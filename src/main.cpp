@@ -8,10 +8,11 @@ const int WindowWidth = 800;
 int main()
 {
     // window 
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE); // For enableing flags for resizing window screen 
 
     InitWindow(WindowWidth, WindowHeight, "Lewis's first program");
-    
+    MaximizeWindow(); // Program enters in max resolution
+
     SetTargetFPS(60);
 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
@@ -28,9 +29,7 @@ int main()
     {
         // Main Menu
         BeginDrawing();
-        {       
-
-            ToggleFullscreen();
+        {                  
 
             // ====== Objects Creation =======
 
