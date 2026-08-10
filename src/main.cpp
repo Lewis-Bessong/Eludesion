@@ -7,15 +7,18 @@ const int WindowWidth = 800;
 
 int main()
 {
+    // window 
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 
     InitWindow(WindowWidth, WindowHeight, "Lewis's first program");
+    
     SetTargetFPS(60);
 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
 
     // rectangle 
-    Vector2 RectanglePosition = { (float)WindowWidth/4, (float)WindowHeight/4};
-    Vector2 RectangleSize = { (float)100.0f, (float)100.0f};
+    Vector2 RectanglePosition = { (float)WindowWidth/2, (float)WindowHeight/2};
+    Vector2 RectangleSize = { (float)200.0f, (float)200.0f};
 
 
     int gamepadIdx = 0;
@@ -26,13 +29,16 @@ int main()
         // Main Menu
         BeginDrawing();
         {       
+
+            ToggleFullscreen();
+
             // ====== Objects Creation =======
 
             ClearBackground(WHITE);
     
             DrawCircleV(BallPosition, 50, RED);
 
-            DrawRectangleV(RectanglePosition, RectangleSize, MAGENTA);
+            DrawRectangleV(RectanglePosition, RectangleSize, BLACK);
 
             // ====== Movement Logic =======
 
@@ -69,6 +75,8 @@ int main()
             }
 
             // ======= Collision ========
+
+
 
 
         }
