@@ -1,25 +1,29 @@
 #include <raylib.h>
 #include <iostream> 
 
-const int WindowHeight = 800;
-const int WindowWidth = 800; 
+// Screen Info
 
+const int MonitorWidth = GetMonitorWidth(0);
+const int MonitorHeight = GetMonitorHeight(0);
+
+const int WindowWidth = GetScreenWidth();
+const int WindowHeight = GetScreenHeight();
 
 int main()
 {
-    // window 
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE); // For enableing flags for resizing window screen 
+    // ======= Window Dimensions ======
 
-    InitWindow(WindowWidth, WindowHeight, "Lewis's first program");
-    MaximizeWindow(); // Program enters in max resolution
+    InitWindow(MonitorWidth/2, MonitorHeight/2, "Eludesion");
+    SetWindowState(FLAG_WINDOW_MAXIMIZED); // Enters in Maximized
 
-    SetTargetFPS(60);
-
+    // Circle 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
 
     // rectangle 
     Vector2 RectanglePosition = { (float)WindowWidth/2, (float)WindowHeight/2};
     Vector2 RectangleSize = { (float)200.0f, (float)200.0f};
+
+    //collision
 
 
     int gamepadIdx = 0;
@@ -30,6 +34,12 @@ int main()
         // Main Menu
         BeginDrawing();
         {                  
+            // ====== Window Dimensions =====
+
+             // Can only Maximize or minimize window 
+            SetConfigFlags(FLAG_WINDOW_MINIMIZED);
+           
+
 
             // ====== Objects Creation =======
 
