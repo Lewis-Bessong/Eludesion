@@ -1,20 +1,18 @@
 #include <raylib.h>
 #include <iostream> 
 
-// Screen Info
-
-const int MonitorWidth = GetMonitorWidth(0);
-const int MonitorHeight = GetMonitorHeight(0);
-
-const int WindowWidth = GetScreenWidth();
-const int WindowHeight = GetScreenHeight();
+const int WindowWidth = 800;
+const int WindowHeight = 800;
 
 int main()
 {
     // ======= Window Dimensions ======
 
-    InitWindow(MonitorWidth/2, MonitorHeight/2, "Eludesion");
-    SetWindowState(FLAG_WINDOW_MAXIMIZED); // Enters in Maximized
+    SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN); // Program still runs when minimized
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable
+    SetConfigFlags(FLAG_WINDOW_MAXIMIZED); // Program enters in maximized state 
+    InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
+    
 
     // Circle 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
@@ -35,9 +33,7 @@ int main()
         BeginDrawing();
         {                  
             // ====== Window Dimensions =====
-
-             // Can only Maximize or minimize window 
-            SetConfigFlags(FLAG_WINDOW_MINIMIZED);
+            SetWindowState(FLAG_WINDOW_MAXIMIZED); // Program constantly stays at Mixaized state (still minimizeable) 
            
 
 
@@ -54,10 +50,10 @@ int main()
             // Keyboard
             SetExitKey(KEY_ESCAPE); // if pressed exits program
 
-            if (IsKeyDown(KEY_D)) BallPosition.x += 5.0f;
-            if (IsKeyDown(KEY_A)) BallPosition.x -= 5.0f;
-            if (IsKeyDown(KEY_W)) BallPosition.y -= 5.0f;
-            if (IsKeyDown(KEY_S)) BallPosition.y += 5.0f;
+            if (IsKeyDown(KEY_D)) BallPosition.x += 2.0f;
+            if (IsKeyDown(KEY_A)) BallPosition.x -= 2.0f;
+            if (IsKeyDown(KEY_W)) BallPosition.y -= 2.0f;
+            if (IsKeyDown(KEY_S)) BallPosition.y += 2.0f;
 
             // Controller
             if (IsGamepadAvailable(gamepadIdx)) { // if controller connected
@@ -66,16 +62,16 @@ int main()
 
                 if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
 
-                    BallPosition.x += 5.0f;
+                    BallPosition.x += 2.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
 
-                    BallPosition.x -= 5.0f;
+                    BallPosition.x -= 2.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
 
-                    BallPosition.y -= 5.0f;
+                    BallPosition.y -= 2.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
 
-                    BallPosition.y += 5.0f;
+                    BallPosition.y += 2.0f;
                 }
 
             } else { // if no controller connected
