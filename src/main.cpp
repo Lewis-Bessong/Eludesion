@@ -1,18 +1,28 @@
 #include <raylib.h>
 #include <iostream> 
 
-const int WindowWidth = 800;
+
+const int WindowWidth = 800; 
 const int WindowHeight = 800;
+ 
 
 int main()
 {
     // ======= Window Dimensions ======
 
+     
+
     SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN); // Program still runs when minimized
     SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable
-    SetConfigFlags(FLAG_WINDOW_MAXIMIZED); // Program enters in maximized state 
+    SetConfigFlags(FLAG_WINDOW_MAXIMIZED); // Program enters in maximized state
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
     
+    // window Icon
+
+    Image Icon = LoadImage("Phoenixicon.PNG");
+    ImageFormat(&Icon, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
+    SetWindowIcon(Icon);
+    UnloadImage(Icon);
 
     // Circle 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
