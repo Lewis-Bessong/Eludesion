@@ -3,15 +3,15 @@
 #include <string>
 
 // Size of startup
-int WindowWidth = GetScreenWidth(); 
-int WindowHeight = GetScreenWidth();
+int WindowWidth = 800; 
+int WindowHeight = 800;
 
 int main()
 {
     // ======= Window Section ======
 
     SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN | FLAG_VSYNC_HINT); // Program can still run when minimized and can have a fps near users monitor refresh rate
-    // SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_WINDOW_MAXIMIZED); // Program can be resizeable and enter in maximized state
+    // SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable and enter in maximized state
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
     
     // window Icon
