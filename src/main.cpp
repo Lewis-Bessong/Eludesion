@@ -25,6 +25,8 @@ int main()
 
     // Circle 
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
+
+    Vector2 Center = {WindowWidth/2 + WindowHeight/2};
     
     int gamepadIdx = 0; // for controller input 
 
@@ -77,7 +79,12 @@ int main()
                 DrawText("No Controller Found", WindowWidth/2, 0, 30, BLACK);
             }
 
+            // ======= Collision Section ======
 
+            if (CheckCollisionCircleLine(Center, Center/2, ) = true) {
+
+
+            };
         }
         EndDrawing();
     }
