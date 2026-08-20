@@ -11,7 +11,7 @@ int main()
     // ======= Window Section ======
 
     SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN | FLAG_VSYNC_HINT); // Program can still run when minimized and can have a fps near users monitor refresh rate
-    // SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable and enter in maximized state
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
     
     // window Icon
@@ -34,8 +34,8 @@ int main()
         // Main Menu
         BeginDrawing();
         {                  
-            // ====== Window Dimensions =====
-            SetWindowState(FLAG_WINDOW_MAXIMIZED); // Program stays in maximized state (still minimizable) 
+            // ====== Window Dimensions ===== 
+            SetWindowState(FLAG_WINDOW_MAXIMIZED);
             
            
             // ====== Objects Creation =======
@@ -46,7 +46,7 @@ int main()
             // ====== Movement Logic =======
 
             // Keyboard
-            SetExitKey(KEY_ESCAPE); // if pressed exits program
+            SetExitKey(KEY_ESCAPE); // if pressed exits progsasram
 
             if (IsKeyDown(KEY_D)) BallPosition.x += 3.0f;
             if (IsKeyDown(KEY_A)) BallPosition.x -= 3.0f;
