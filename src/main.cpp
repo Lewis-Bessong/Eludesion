@@ -22,14 +22,14 @@ int main()
 
     // ======= Shapes/Drawing =======
 
-
     // Circle 
-    Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
-
-    Vector2 Center = {WindowWidth/2 + WindowHeight/2};
+    Vector2 BallPosition = { GetScreenWidth()/2, GetScreenHeight()/2}; // middle of screen
+    int BallRadius = 40;
+    Color BallColor = BLACK;
     
     int gamepadIdx = 0; // for controller input 
 
+    SetTargetFPS(60);
     
     while (WindowShouldClose() == false)
     {
@@ -39,13 +39,18 @@ int main()
             // ====== Window Dimensions ===== 
             SetWindowState(FLAG_WINDOW_MAXIMIZED);
             
-           
             // ====== Objects Creation =======
             ClearBackground(WHITE);
     
-            DrawCircleV(BallPosition, 50, RED);
+            DrawCircleV(BallPosition, BallRadius, BallColor);
 
             // ====== Movement Logic =======
+
+            // Wall Collision 
+            if (BallPosition.x >= GetScreenWidth() - BallRadius) BallPosition.x = GetScreenWidth() - BallRadius;  // Checks right wall
+            if (BallPosition.y >= GetScreenHeight() - BallRadius) BallPosition.y = GetScreenHeight() - BallRadius; // Checks bottom wall
+            if (BallPosition.x <= BallRadius) BallPosition.x = BallRadius; // Checks left wall 
+            if (BallPosition.y <= BallRadius) BallPosition.y = BallRadius; // Checks top wall
 
             // Keyboard
             SetExitKey(KEY_ESCAPE); // if pressed exits progsasram
@@ -81,10 +86,7 @@ int main()
 
             // ======= Collision Section ======
 
-            if (CheckCollisionCircleLine(Center, Center/2, ) = true) {
 
-
-            };
         }
         EndDrawing();
     }
