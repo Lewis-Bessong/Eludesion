@@ -23,8 +23,8 @@ int main()
     // ======= Shapes/Drawing =======
 
     // Circle 
-    Vector2 BallPosition = { GetScreenWidth()/2, GetScreenHeight()/2}; // middle of screen
-    int BallRadius = 40;
+    Vector2 BallPosition = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2}; // middle of screen
+    int BallRadius = 35;
     Color BallColor = BLACK;
     
     int gamepadIdx = 0; // for controller input 
@@ -33,7 +33,7 @@ int main()
     
     while (WindowShouldClose() == false)
     {
-        // Main Menu
+        
         BeginDrawing();
         {                  
             // ====== Window Dimensions ===== 
@@ -44,48 +44,46 @@ int main()
     
             DrawCircleV(BallPosition, BallRadius, BallColor);
 
-            // ====== Movement Logic =======
-
             // Wall Collision 
+
             if (BallPosition.x >= GetScreenWidth() - BallRadius) BallPosition.x = GetScreenWidth() - BallRadius;  // Checks right wall
             if (BallPosition.y >= GetScreenHeight() - BallRadius) BallPosition.y = GetScreenHeight() - BallRadius; // Checks bottom wall
             if (BallPosition.x <= BallRadius) BallPosition.x = BallRadius; // Checks left wall 
             if (BallPosition.y <= BallRadius) BallPosition.y = BallRadius; // Checks top wall
 
+            // ====== Movement Logic =======
+
             // Keyboard
             SetExitKey(KEY_ESCAPE); // if pressed exits progsasram
 
-            if (IsKeyDown(KEY_D)) BallPosition.x += 3.0f;
-            if (IsKeyDown(KEY_A)) BallPosition.x -= 3.0f;
-            if (IsKeyDown(KEY_W)) BallPosition.y -= 3.0f;
-            if (IsKeyDown(KEY_S)) BallPosition.y += 3.0f;
+            if (IsKeyDown(KEY_D)) BallPosition.x += 4.0f;
+            if (IsKeyDown(KEY_A)) BallPosition.x -= 4.0f;
+            if (IsKeyDown(KEY_W)) BallPosition.y -= 4.0f;
+            if (IsKeyDown(KEY_S)) BallPosition.y += 4.0f;
 
             // Controller
             if (IsGamepadAvailable(gamepadIdx)) { // if controller connected
 
-                DrawText("Controller Connected", WindowWidth/2, 0, 30, BLACK);
+                DrawText("Controller Connected", GetScreenWidth()/2, 0, 30, BLACK);
 
                 if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
 
-                    BallPosition.x += 3.0f;
+                    BallPosition.x += 4.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
 
-                    BallPosition.x -= 3.0f;
+                    BallPosition.x -= 4.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
 
-                    BallPosition.y -= 3.0f;
+                    BallPosition.y -= 4.0f;
                 } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
 
-                    BallPosition.y += 3.0f;
+                    BallPosition.y += 4.0f;
                 }
 
             } else { // if no controller connected
 
-                DrawText("No Controller Found", WindowWidth/2, 0, 30, BLACK);
+                DrawText("No Controller Found", GetScreenWidth()/2, 0, 30, BLACK);
             }
-
-            // ======= Collision Section ======
-
 
         }
         EndDrawing();
