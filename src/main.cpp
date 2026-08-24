@@ -2,6 +2,9 @@
 #include <iostream> 
 #include <string>
 
+#define PS_ALIAS_1  "playstation"
+#define PS_ALIAS_2  "sony"
+
 // Size of startup
 int WindowWidth = 800; 
 int WindowHeight = 800;
@@ -27,10 +30,23 @@ int main()
     int BallRadius = 35;
     Color BallColor = BLACK;
     
+    // ======= Game Pad ========
+
+    // Axis Deadzone (keep controller from drifting off)
+    const float leftStickDeadzoneX = 0.1f;
+    const float leftStickDeadzoneY = 0.1f;
+    const float rightStickDeadzoneX = 0.1f;
+    const float rightStickDeadzoneY = 0.1f;
+    const float leftTriggerDeadzone = -0.9f;
+    const float rightTriggerDeadzone = -0.9f;
+
+
     int gamepadIdx = 0; // for controller input 
 
     SetTargetFPS(60);
     
+    // ===== Game Loop =====
+
     while (WindowShouldClose() == false)
     {
         
