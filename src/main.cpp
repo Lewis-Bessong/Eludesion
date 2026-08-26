@@ -9,7 +9,7 @@
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
-enum GameState {
+enum class GameState { // enum class keeps things within enum scoped to 'GameState'
     GameMenu,
     GamePlaying,
     GameSettings
@@ -46,7 +46,8 @@ int main()
     const float leftTriggerDeadzone = -0.9f;
     const float rightTriggerDeadzone = -0.9f;
 
-    enum GameState Now = GamePlaying;
+    enum GameState CurrentState = GameState::GamePlaying;
+
 
     int gamepadIdx = 0; // for controller input 
 
@@ -60,7 +61,19 @@ int main()
         BeginDrawing();
         {     
             
-            
+            // will be used for game state switching (All current code will go in gameplaying, then be tested)
+            switch (CurrentState) { // start at menu
+
+                case GameState::GameMenu: {
+
+
+                }
+
+                case GameState::GamePlaying: {
+
+
+                }
+            }
 
             // ====== Window Dimensions ===== 
             SetWindowState(FLAG_WINDOW_MAXIMIZED);
