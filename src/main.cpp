@@ -9,6 +9,12 @@
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
+enum GameState {
+    GameMenu,
+    GamePlaying,
+    GameSettings
+};
+
 int main()
 {
     // ======= Window Section ======
@@ -40,6 +46,7 @@ int main()
     const float leftTriggerDeadzone = -0.9f;
     const float rightTriggerDeadzone = -0.9f;
 
+    enum GameState Now = GamePlaying;
 
     int gamepadIdx = 0; // for controller input 
 
@@ -51,7 +58,10 @@ int main()
     {
         
         BeginDrawing();
-        {                  
+        {     
+            
+            
+
             // ====== Window Dimensions ===== 
             SetWindowState(FLAG_WINDOW_MAXIMIZED);
             
