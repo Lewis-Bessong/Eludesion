@@ -36,17 +36,8 @@ int main()
     int BallRadius = 35;
     Color BallColor = BLACK;
     
-    // ======= Game Pad ========
-
-    // Axis Deadzone (keep controller from drifting off)
-    const float leftStickDeadzoneX = 0.1f;
-    const float leftStickDeadzoneY = 0.1f;
-    const float rightStickDeadzoneX = 0.1f;
-    const float rightStickDeadzoneY = 0.1f;
-    const float leftTriggerDeadzone = -0.9f;
-    const float rightTriggerDeadzone = -0.9f;
-
-    enum GameState CurrentState = GameState::GamePlaying;
+ 
+    enum GameState CurrentState = GameState::GameMenu;
 
 
     int gamepadIdx = 0; // for controller input 
@@ -69,10 +60,19 @@ int main()
                 case GameState::GameMenu: {
                     // new code for menu 
 
-                }
+                    DrawText("Click to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
 
+                    if (IsMouseButtonPressed) {
+
+                        GameState CurrentState = GameState::GamePlaying;
+                    }
+
+                }
+            
                 case GameState::GamePlaying: {
                     //current game logic goes in here 
+
+                    ClearBackground(WHITE);
 
                     DrawCircleV(BallPosition, BallRadius, BallColor);
 
@@ -96,32 +96,33 @@ int main()
                     // Controller
                     if (IsGamepadAvailable(gamepadIdx)) { // if controller connected
 
-                    DrawText("Controller Connected", GetScreenWidth()/2, 0, 30, BLACK);
+                        DrawText("Controller Connected", GetScreenWidth()/2, 0, 30, BLACK);
 
-                    if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
+                        if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_RIGHT)) { // right arrow
 
-                        BallPosition.x += 4.0f;
-                    } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
+                            BallPosition.x += 4.0f;
+                        } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_LEFT)) { // left arrow
 
-                        BallPosition.x -= 4.0f;
-                    } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
+                            BallPosition.x -= 4.0f;
+                        } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_UP)) { // up arrow 
 
-                        BallPosition.y -= 4.0f;
-                    } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
+                            BallPosition.y -= 4.0f;
+                        } if (IsGamepadButtonDown(gamepadIdx, GAMEPAD_BUTTON_LEFT_FACE_DOWN)) { // down arrow
 
-                        BallPosition.y += 4.0f;
-                    } else { // if no controller connected
+                            BallPosition.y += 4.0f;
+                        } else { // if no controller connected
 
-                        DrawText("No Controller Found", GetScreenWidth()/2, 0, 30, BLACK);
+                            DrawText("No Controller Found", GetScreenWidth()/2, 0, 30, BLACK);
+                        }
+
                     }
-
                 }
+           
             }
-
-
         }
         EndDrawing();
     }
+
 
     CloseWindow();
     return 0;
