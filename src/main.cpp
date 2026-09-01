@@ -2,6 +2,7 @@
 #include <iostream> 
 #include <string>
 
+// why did I do this? 
 #define PS_ALIAS_1  "playstation"
 #define PS_ALIAS_2  "sony"
 
@@ -12,7 +13,7 @@ int WindowHeight = 800;
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
     GameMenu,
     GamePlaying,
-    GameSettings
+    GameSettings // do i really need setting s for right now? 
 };
 
 int main()
@@ -65,12 +66,12 @@ int main()
             switch (CurrentState) { // start at menu
 
                 case GameState::GameMenu: {
-
+                    // new code for menu 
 
                 }
 
                 case GameState::GamePlaying: {
-
+                    //current game logic goes in here 
 
                 }
             }
