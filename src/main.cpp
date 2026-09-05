@@ -10,9 +10,10 @@
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
-enum class GameState { // enum class keeps things within enum scoped to 'GameState'
+enum GameState { // enum class keeps things within enum scoped to 'GameState'
+
     GameMenu,
-    GamePlaying
+    GamePlaying 
 };
 
 int main()
@@ -36,9 +37,7 @@ int main()
     int BallRadius = 35;
     Color BallColor = BLACK;
     
- 
-    enum GameState CurrentState = GameState::GameMenu;
-
+    GameState CurrentState = GameState::GameMenu;
 
     int gamepadIdx = 0; // for controller input 
 
@@ -57,14 +56,14 @@ int main()
             // will be used for game state switching (All current code will go in gameplaying, then be tested)
             switch (CurrentState) { // start at menu
 
-                case GameState::GameMenu: {
+                case GameState::GameMenu: { // case for menu
                     // new code for menu 
 
-                    DrawText("Click to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
+                    DrawText("Press A to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
 
-                    if (IsMouseButtonPressed) {
+                    if (IsKeyPressed(KEY_A)) {
 
-                        GameState CurrentState = GameState::GamePlaying;
+                        CurrentState = GameState::GameMenu;
                     }
 
                 }
