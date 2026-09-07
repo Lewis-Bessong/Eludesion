@@ -10,7 +10,7 @@
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
-enum GameState { // enum class keeps things within enum scoped to 'GameState'
+enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
     GameMenu,
     GamePlaying 
@@ -59,22 +59,21 @@ int main()
                 case GameState::GameMenu: { // case for menu
                     // new code for menu 
 
-                    DrawText("Press A to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
+                    DrawText("Click to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
 
-                    if (IsKeyPressed(KEY_A)) {
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
 
-                        CurrentState = GameState::GameMenu;
+                        CurrentState = GameState::GamePlaying;       
                     }
-
+                    
                 }
             
                 case GameState::GamePlaying: {
-                    //current game logic goes in here 
 
-                    ClearBackground(WHITE);
-
-                    DrawCircleV(BallPosition, BallRadius, BallColor);
-
+                    if (CurrentState == GameState::GamePlaying){
+                        
+                        DrawCircleV(BallPosition, BallRadius, BallColor);
+                    }
                     // Wall Collision 
 
                     if (BallPosition.x >= GetScreenWidth() - BallRadius) BallPosition.x = GetScreenWidth() - BallRadius;  // Checks right wall
@@ -112,15 +111,17 @@ int main()
                         } else { // if no controller connected
 
                             DrawText("No Controller Found", GetScreenWidth()/2, 0, 30, BLACK);
+                            
                         }
-
+                    
                     }
                 }
-           
+                    
             }
+           
         }
-        EndDrawing();
     }
+        EndDrawing();
 
 
     CloseWindow();
