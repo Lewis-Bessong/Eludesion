@@ -71,7 +71,7 @@ int main()
                 case GameState::GamePlaying: {
 
                     if (CurrentState == GameState::GamePlaying){
-                        
+
                         DrawCircleV(BallPosition, BallRadius, BallColor);
                     }
                     // Wall Collision 
@@ -120,11 +120,13 @@ int main()
             }
            
         }
-    }
+        
         EndDrawing();
-
-
+        
+    }
+        
     CloseWindow();
+    
     return 0;
 
 }
