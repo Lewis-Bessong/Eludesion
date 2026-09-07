@@ -2,10 +2,6 @@
 #include <iostream> 
 #include <string>
 
-// why did I do this? 
-#define PS_ALIAS_1  "playstation"
-#define PS_ALIAS_2  "sony"
-
 // Size of startup
 int WindowWidth = 800; 
 int WindowHeight = 800;
@@ -23,6 +19,7 @@ int main()
     SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN | FLAG_VSYNC_HINT); // Program can still run when minimized and can have a fps near users monitor refresh rate
     SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
+    Vector2 WindowCenter = { (float)GetScreenWidth() /2, (float)GetScreenHeight() /2};
     
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
@@ -30,14 +27,19 @@ int main()
     SetWindowIcon(Icon);
     UnloadImage(Icon);
 
-    // ======= Shapes/Drawing =======
-
     // Circle 
     Vector2 BallPosition = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2}; // middle of screen
     int BallRadius = 35;
     Color BallColor = BLACK;
     
-    GameState CurrentState = GameState::GameMenu;
+    // Game Title Text
+    Font font = LoadFont ("alagard.png");
+    Vector2 TitlePosition = { (float)GetRenderWidth(), (float)GetRenderHeight()};
+    const int TitleFont = 40; 
+    const float TitleSpacing = 2.0;
+    const Color TitleColor = MAROON;
+
+    GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
     int gamepadIdx = 0; // for controller input 
 
@@ -56,10 +58,11 @@ int main()
             // will be used for game state switching (All current code will go in gameplaying, then be tested)
             switch (CurrentState) { // start at menu
 
-                case GameState::GameMenu: { // case for menu
-                    // new code for menu 
+                case GameState::GameMenu: { // case for menu 
 
-                    DrawText("Click to continue....", WindowWidth/2, WindowHeight/2, 30, BLACK);
+                    DrawTextEx(font, "Eludesion", WindowCenter, TitleFont, TitleSpacing, TitleColor); // Game Menu Title
+
+                    DrawText("Click to continue....", 400, 400, 50, BLACK);
 
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
 
@@ -70,10 +73,19 @@ int main()
             
                 case GameState::GamePlaying: {
 
+                    // Game State Switch
+                    if (IsKeyPressed(KEY_M)) {
+
+                        CurrentState = GameState::GameMenu;
+                    }
+
+                    // Circle creation only in this state
                     if (CurrentState == GameState::GamePlaying){
 
                         DrawCircleV(BallPosition, BallRadius, BallColor);
                     }
+
+
                     // Wall Collision 
 
                     if (BallPosition.x >= GetScreenWidth() - BallRadius) BallPosition.x = GetScreenWidth() - BallRadius;  // Checks right wall
@@ -120,7 +132,7 @@ int main()
             }
            
         }
-        
+
         EndDrawing();
         
     }
