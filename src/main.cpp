@@ -3,8 +3,8 @@
 #include <string>
 
 // Size of startup
-int WindowWidth = 800; 
-int WindowHeight = 800;
+int WindowWidth = GetScreenWidth(); 
+int WindowHeight = GetScreenHeight();
 
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
@@ -16,10 +16,9 @@ int main()
 {
     // ======= Window Section ======
 
-    SetConfigFlags(FLAG_WINDOW_ALWAYS_RUN | FLAG_VSYNC_HINT); // Program can still run when minimized and can have a fps near users monitor refresh rate
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE); // Program can be resizeable
+    SetConfigFlags(FLAG_VSYNC_HINT); // Can have a fps near users monitor refresh rate
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
-    Vector2 WindowCenter = { (float)GetScreenWidth() /2, (float)GetScreenHeight() /2};
+    Vector2 WindowCenter = { (float)WindowWidth/2, (float)WindowHeight/2};
     
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
@@ -28,7 +27,7 @@ int main()
     UnloadImage(Icon);
 
     // Circle 
-    Vector2 BallPosition = { (float)GetScreenWidth()/2, (float)GetScreenHeight()/2}; // middle of screen
+    Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
     int BallRadius = 35;
     Color BallColor = BLACK;
     
@@ -52,7 +51,6 @@ int main()
         
         BeginDrawing();
         ClearBackground(WHITE);
-        SetWindowState(FLAG_WINDOW_MAXIMIZED);
         {     
             
             // will be used for game state switching (All current code will go in gameplaying, then be tested)
@@ -84,7 +82,6 @@ int main()
 
                         DrawCircleV(BallPosition, BallRadius, BallColor);
                     }
-
 
                     // Wall Collision 
 
