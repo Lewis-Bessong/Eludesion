@@ -12,13 +12,15 @@ enum class GameState { // enum class keeps things within enum scoped to 'GameSta
     GamePlaying 
 };
 
+
+
+
 int main()
 {
     // ======= Window Section ======
 
     SetConfigFlags(FLAG_VSYNC_HINT); // Can have a fps near users monitor refresh rate
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
-    Vector2 WindowCenter = { (float)WindowWidth/2, (float)WindowHeight/2};
     
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
@@ -33,11 +35,18 @@ int main()
     
     // Game Title Text
     Font font = LoadFont ("alagard.png");
-    Vector2 TitlePosition = { (float)GetRenderWidth(), (float)GetRenderHeight()};
-    const int TitleFont = 40; 
+    const char* TitleName = "Eludesion";
+    const int TitleFontSize = 40;
     const float TitleSpacing = 2.0;
     const Color TitleColor = MAROON;
 
+    // find out why operators arent working
+    int TitleCenterX = (WindowWidth / 2) - (MeasureTextEx(font, TitleName, TitleFontSize, TitleSpacing) / 2);
+    int TitleCenterY = (WindowHeight /2) - (TitleFontSize /2);
+
+    // trying to get measure center text in the center of windwo screen
+    Vector2 TitlePosition = { };  // middle of screen
+     
     GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
     int gamepadIdx = 0; // for controller input 
