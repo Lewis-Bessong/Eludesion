@@ -12,9 +12,6 @@ enum class GameState { // enum class keeps things within enum scoped to 'GameSta
     GamePlaying 
 };
 
-
-
-
 int main()
 {
     // ======= Window Section ======
@@ -34,18 +31,15 @@ int main()
     Color BallColor = BLACK;
     
     // Game Title Text
-    Font font = LoadFont ("alagard.png");
+    Font TitleFont = LoadFont ("alagard.png");
     const char* TitleName = "Eludesion";
-    const int TitleFontSize = 40;
+    const float TitleFontSize = 40;
     const float TitleSpacing = 2.0;
     const Color TitleColor = MAROON;
 
-    // find out why operators arent working
-    int TitleCenterX = (WindowWidth / 2) - (MeasureTextEx(font, TitleName, TitleFontSize, TitleSpacing) / 2);
-    int TitleCenterY = (WindowHeight /2) - (TitleFontSize /2);
-
-    // trying to get measure center text in the center of windwo screen
-    Vector2 TitlePosition = { };  // middle of screen
+    Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
+    
+    Vector2 TitlePosition = {TitleSize};  // middle of screen
      
     GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
@@ -67,7 +61,7 @@ int main()
 
                 case GameState::GameMenu: { // case for menu 
 
-                    DrawTextEx(font, "Eludesion", WindowCenter, TitleFont, TitleSpacing, TitleColor); // Game Menu Title
+                    DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
                     DrawText("Click to continue....", 400, 400, 50, BLACK);
 
