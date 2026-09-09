@@ -37,9 +37,17 @@ int main()
     const float TitleSpacing = 2.0;
     const Color TitleColor = MAROON;
 
-    Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
+    /* 
+        (Title should be centered horizontally but not vertically)
+
+        - Need to find a way to measure text/title in middle of screen
+        - Need to put a play button/click to start below title
+        - Look forfunction that measures text and how to calculate it
     
-    Vector2 TitlePosition = {TitleSize};  // middle of screen
+    
+    */
+
+    
      
     GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
@@ -51,7 +59,15 @@ int main()
 
     while (WindowShouldClose() == false)
     {
-        
+        // get title measurements/size
+        Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
+
+        Vector2 TitlePosition = { // calulate center 
+            
+            (WindowWidth/ 2.0f) - (TitleSize.x / 2.0f) // x position
+            
+        };
+
         BeginDrawing();
         ClearBackground(WHITE);
         {     
