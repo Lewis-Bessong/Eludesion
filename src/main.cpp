@@ -2,7 +2,7 @@
 #include <iostream> 
 #include <string>
 
-// Size of startup
+// test system start ups
 int WindowWidth = GetScreenWidth(); 
 int WindowHeight = GetScreenHeight();
 
@@ -33,22 +33,16 @@ int main()
     // Game Title Text
     Font TitleFont = LoadFont ("alagard.png");
     const char* TitleName = "Eludesion";
-    const float TitleFontSize = 40;
-    const float TitleSpacing = 2.0;
+    const float TitleFontSize = 20;
+    const float TitleSpacing = 0.1;
     const Color TitleColor = MAROON;
 
-    /* 
-        (Title should be centered horizontally but not vertically)
+    // get title measurements/size
+    Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
 
-        - Need to find a way to measure text/title in middle of screen
-        - Need to put a play button/click to start below title
-        - Look forfunction that measures text and how to calculate it
-    
-    
-    */
+    Vector2 TitlePosition = (Vector2) {(WindowWidth/ 2) - (TitleSize.x / 2), (WindowHeight / 2) - (TitleSize.y / 2)};
 
-    
-     
+    // var for switching states
     GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
     int gamepadIdx = 0; // for controller input 
@@ -59,15 +53,6 @@ int main()
 
     while (WindowShouldClose() == false)
     {
-        // get title measurements/size
-        Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
-
-        Vector2 TitlePosition = { // calulate center 
-            
-            (WindowWidth/ 2.0f) - (TitleSize.x / 2.0f) // x position
-            
-        };
-
         BeginDrawing();
         ClearBackground(WHITE);
         {     
@@ -79,7 +64,7 @@ int main()
 
                     DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
-                    DrawText("Click to continue....", 400, 400, 50, BLACK);
+                    DrawText("Click to continue....", 400, 700, 50, BLACK);
 
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
 
