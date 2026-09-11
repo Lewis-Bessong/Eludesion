@@ -1,7 +1,16 @@
-# Eludesion 
+# Welcome to Eludesion !! 
 
-## Description
+### Overview
+Eludesion is a 2d multilevel run and gun game, where the main idea is to defeat incoming threat from invaders. However, the game also challenges the gaurdian(the player) with mission goals, boss levels, and conflicting gaurdian decisions.
 
-## Next Ideas/Plans
+### Description/Plot
 
-## Controls
+### Controls
+
+#### Controller
+
+#### PC
+
+## Plans
+
+## Resources

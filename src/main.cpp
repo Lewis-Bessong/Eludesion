@@ -3,8 +3,8 @@
 #include <string>
 
 // test system start ups
-int WindowWidth = GetScreenWidth(); 
-int WindowHeight = GetScreenHeight();
+int WindowWidth = 800; 
+int WindowHeight = 800;
 
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
