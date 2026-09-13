@@ -33,7 +33,7 @@ int main()
     // Game Title Text
     Font TitleFont = LoadFont ("alagard.png");
     const char* TitleName = "Eludesion";
-    const float TitleFontSize = 20;
+    const float TitleFontSize = 160;
     const float TitleSpacing = 0.1;
     const Color TitleColor = MAROON;
 
