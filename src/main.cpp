@@ -17,8 +17,12 @@ int main()
     // ======= Window Section ======
 
     SetConfigFlags(FLAG_VSYNC_HINT); // Can have a fps near users monitor refresh rate
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
     
+    
+
+
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
     ImageFormat(&Icon, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
@@ -53,6 +57,9 @@ int main()
 
     while (WindowShouldClose() == false)
     {
+
+
+
         BeginDrawing();
         ClearBackground(WHITE);
         {     
@@ -61,16 +68,23 @@ int main()
             switch (CurrentState) { // start at menu
 
                 case GameState::GameMenu: { // case for menu 
-
-                    DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
-
-                    DrawText("Click to continue....", 400, 700, 50, BLACK);
-
-                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
-
-                        CurrentState = GameState::GamePlaying;       
-                    }
                     
+                    if (IsWindowMaximized()) {
+
+                        DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
+
+                        
+
+                        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+
+                            
+                            CurrentState = GameState::GamePlaying;       
+                        }
+                    } else {
+
+                        DrawText("Maximize to continue", 400, 400, 50, BLUE);
+                    }
+        
                 }
             
                 case GameState::GamePlaying: {
