@@ -20,8 +20,6 @@ int main()
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
     
-    
-
 
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
@@ -56,9 +54,10 @@ int main()
     // ===== Game Loop =====
 
     while (WindowShouldClose() == false)
-    {
+    {     
 
-
+        int CurrentWindowWidth = GetScreenWidth(); // is always getting window width
+        int CurrentWindowHeight = GetScreenHeight(); // is always getting window height
 
         BeginDrawing();
         ClearBackground(WHITE);
@@ -69,21 +68,31 @@ int main()
 
                 case GameState::GameMenu: { // case for menu 
                     
-                    if (IsWindowMaximized()) {
+                    while (!IsWindowMaximized()) { // keeps checking if window not maximized
 
-                        DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
+                        if (CurrentWindowWidth < WindowWidth) { // checks for width 
 
-                        
+                            DrawText("Resize Game Width.", WindowWidth/2, WindowHeight/2, 50, BLACK);
 
-                        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                        } if (CurrentWindowHeight < WindowHeight) { // checks for height 
+
+                            DrawText("Resize Game Height.", WindowWidth/2, WindowHeight/2, 50, BLACK);
+
+                        } else { // runs normally if else
+
+                            DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
+
+                            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
 
                             
-                            CurrentState = GameState::GamePlaying;       
-                        }
-                    } else {
+                                CurrentState = GameState::GamePlaying;       
+                            }
 
-                        DrawText("Maximize to continue", 400, 400, 50, BLUE);
+                        }
+
                     }
+
+                    
         
                 }
             
