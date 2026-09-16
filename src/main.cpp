@@ -66,6 +66,17 @@ int main()
 
                 case GameState::GameMenu: { // case for menu     
                     
+                    /*
+                    
+                    Next thing to work on is the main menu design, get a layout for the game now that window logic is
+                    scure. Title may have to in different position, add play button/way to start.
+
+                    1. Plan Layout
+                    2. Start simple
+                    3. Design
+                                  
+                    */
+
                     DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
