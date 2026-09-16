@@ -19,7 +19,7 @@ int main()
     SetConfigFlags(FLAG_VSYNC_HINT); // Can have a fps near users monitor refresh rate
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(WindowWidth, WindowHeight, "Eludesion"); // program start 
-    
+    SetWindowMinSize(WindowWidth, WindowHeight); // Window cannot be resized less than initial window width and height
 
     // window Icon
     Image Icon = LoadImage("PhoenixIcon.png");
@@ -68,32 +68,16 @@ int main()
 
                 case GameState::GameMenu: { // case for menu 
                     
-                    while (!IsWindowMaximized()) { // keeps checking if window not maximized
+                    DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
-                        if (CurrentWindowWidth < WindowWidth) { // checks for width 
-
-                            DrawText("Resize Game Width.", WindowWidth/2, WindowHeight/2, 50, BLACK);
-
-                        } if (CurrentWindowHeight < WindowHeight) { // checks for height 
-
-                            DrawText("Resize Game Height.", WindowWidth/2, WindowHeight/2, 50, BLACK);
-
-                        } else { // runs normally if else
-
-                            DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
-
-                            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                        
 
                             
-                                CurrentState = GameState::GamePlaying;       
-                            }
-
-                        }
-
+                        CurrentState = GameState::GamePlaying;       
                     }
 
-                    
-        
+    
                 }
             
                 case GameState::GamePlaying: {
