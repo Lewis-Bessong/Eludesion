@@ -39,11 +39,6 @@ int main()
     const float TitleSpacing = 0.1;
     const Color TitleColor = MAROON;
 
-    // get title measurements/size
-    Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
-
-    Vector2 TitlePosition = (Vector2) {(WindowWidth/ 2) - (TitleSize.x / 2), (WindowHeight / 2) - (TitleSize.y / 2)};
-
     // var for switching states
     GameState CurrentState = GameState::GameMenu; // Variable to contain current states
 
@@ -59,25 +54,25 @@ int main()
         int CurrentWindowWidth = GetScreenWidth(); // is always getting window width
         int CurrentWindowHeight = GetScreenHeight(); // is always getting window height
 
+        // get title measurements/size
+        Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
+        Vector2 TitlePosition = (Vector2) {(CurrentWindowWidth/ 2) - (TitleSize.x / 2), (CurrentWindowHeight/ 2) - (TitleSize.y / 2)};
+
         BeginDrawing();
         ClearBackground(WHITE);
         {     
             
-            // will be used for game state switching (All current code will go in gameplaying, then be tested)
             switch (CurrentState) { // start at menu
 
-                case GameState::GameMenu: { // case for menu 
+                case GameState::GameMenu: { // case for menu     
                     
                     DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
-                        
-
-                            
+  
                         CurrentState = GameState::GamePlaying;       
                     }
-
-    
+   
                 }
             
                 case GameState::GamePlaying: {
