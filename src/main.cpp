@@ -56,7 +56,7 @@ int main()
 
         // get title measurements/size
         Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
-        Vector2 TitlePosition = (Vector2) {(CurrentWindowWidth/ 2) - (TitleSize.x / 2), (CurrentWindowHeight/ 2) - (TitleSize.y / 2)};
+        Vector2 TitlePosition = (Vector2) {(CurrentWindowWidth/ 2) - (TitleSize.x / 2), 0};
 
         BeginDrawing();
         ClearBackground(WHITE);
