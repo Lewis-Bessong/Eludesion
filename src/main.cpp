@@ -65,8 +65,8 @@ int main()
         // Main Menu Buttons (Rectangles)
 
         // Play button
-        Vector2 PlayRectPosition = { , };
-        Vector2 PlayRectSize = { , }; 
+        Vector2 PlayRectSize = {}; // Need inner radius and outter radius ?
+        Vector2 PlayRectPosition = { (float)CurrentWindowWidth/3, (float)CurrentWindowHeight/-2}; // width is quarter of half, height is inverted from top
         Color PlayRectColor = BEIGE;
 
         BeginDrawing();
