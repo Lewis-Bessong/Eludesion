@@ -9,7 +9,8 @@ int WindowHeight = 800;
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
     GameMenu,
-    GamePlaying 
+    GamePlaying,
+    GameSettings 
 };
 
 int main()
@@ -31,6 +32,9 @@ int main()
     Vector2 BallPosition = { (float)WindowWidth/2, (float)WindowHeight/2}; // middle of screen
     int BallRadius = 35;
     Color BallColor = BLACK;
+
+    
+
     
     // Game Title Text
     Font TitleFont = LoadFont ("alagard.png");
@@ -58,6 +62,13 @@ int main()
         Vector2 TitleSize = (MeasureTextEx(TitleFont, TitleName, TitleFontSize, TitleSpacing));
         Vector2 TitlePosition = (Vector2) {(CurrentWindowWidth/ 2) - (TitleSize.x / 2), 0};
 
+        // Main Menu Buttons (Rectangles)
+
+        // Play button
+        Vector2 PlayRectPosition = { , };
+        Vector2 PlayRectSize = { , }; 
+        Color PlayRectColor = BEIGE;
+
         BeginDrawing();
         ClearBackground(WHITE);
         {     
@@ -66,20 +77,19 @@ int main()
 
                 case GameState::GameMenu: { // case for menu     
                     
-                    /*
+                    /* TO DO FOR MAIN MENU
                     
-                    Next thing to work on is the main menu design, get a layout for the game now that window logic is
-                    scure. Title may have to in different position, add play button/way to start.
-
-                    1. Plan Layout
-                    2. Start simple
-                    3. Design
+                    1. Add rectangles/ ovals for game buttons
+                    2. Add words (Play, Settings, Locker) ontop of shapes
+                    3. Add logic to make it interactive
                                   
                     */
 
+
+
                     DrawTextEx(TitleFont, "Eludesion", TitlePosition, TitleFontSize, TitleSpacing, TitleColor); // Game Menu Title
 
-                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){ // used for now to switch to other state
   
                         CurrentState = GameState::GamePlaying;       
                     }
@@ -142,7 +152,10 @@ int main()
                     
                     }
                 }
-                    
+               
+                case GameState::GameSettings: {
+
+                };
             }
            
         }
