@@ -1,13 +1,13 @@
 #include <raylib.h>
 #include <iostream> 
 #include <string>
-#include <Button.hpp>
+#include <Button.hpp> // calling this file so code inside can be used in main
 
 // test system start ups
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
-// could be put in header file 
+// could enum class be put in header file?
 
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
@@ -38,7 +38,7 @@ int main()
     Color BallColor = BLACK;
 
     
-
+    // could all the variables inside main be put in header file?
     
     // Game Title Text
     Font TitleFont = LoadFont ("alagard.png");
@@ -83,9 +83,9 @@ int main()
                     
                     /* TO DO FOR MAIN MENU
                     
-                    1. Add rectangles/ ovals for game buttons
-                    2. Add words (Play, Settings, Locker) ontop of shapes
-                    3. Add logic to make it interactive
+                    . Add Buttons for play, settings, and exit (Watch youtube vid)
+                    . seperate file for main menu
+                    . header files
                                   
                     */
 

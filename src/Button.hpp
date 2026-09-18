@@ -11,5 +11,5 @@ class Button {
 
     private:
         Texture2D texture;
-        Vector2D position;
+        Vector2D position; // continue youtube vid maybe
 };
