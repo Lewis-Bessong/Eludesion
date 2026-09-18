@@ -6,11 +6,26 @@
 int WindowWidth = 800; 
 int WindowHeight = 800;
 
+// could be put in header file 
+
 enum class GameState { // enum class keeps things within enum scoped to 'GameState'
 
     GameMenu,
     GamePlaying,
     GameSettings 
+};
+
+class Button {
+
+    public:
+
+        Button();
+        ~Button();
+        void Draw(); // used to draw buttons 
+
+    private:
+        Texture2D texture;
+        Vector2D position;
 };
 
 int main()
