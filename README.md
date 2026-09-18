@@ -12,5 +12,10 @@ Eludesion is a 2d multilevel run and gun game, where the main idea is to defeat 
 #### PC
 
 ## Plans
+So far the plan is to develop the main menu before the game. More Specifically
+
+1. create buttons for game start, settings, and exit game
+2. improve game layout/design (background, fonts, texture, etc.)
+
 
 ## Resources
