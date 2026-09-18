@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include <iostream> 
 #include <string>
+#include <Button.hpp>
 
 // test system start ups
 int WindowWidth = 800; 
@@ -15,18 +16,6 @@ enum class GameState { // enum class keeps things within enum scoped to 'GameSta
     GameSettings 
 };
 
-class Button {
-
-    public:
-
-        Button();
-        ~Button();
-        void Draw(); // used to draw buttons 
-
-    private:
-        Texture2D texture;
-        Vector2D position;
-};
 
 int main()
 {
